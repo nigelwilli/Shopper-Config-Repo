@@ -1,5 +1,5 @@
 server:
-  port: 8762
+  port: 8080
   tomcat:
     max-http-post-size: 2MB
     max-swallow-size: 2MB
