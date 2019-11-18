@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8762
   tomcat:
     max-http-post-size: 2MB
     max-swallow-size: 2MB
@@ -23,8 +23,8 @@ eureka:
   client:
     enabled: false
     serviceUrl: http://localhost:8761/eureka
-  register-with-eureka: true
-  fetch-registry: true
+  register-with-eureka: false
+  fetch-registry: false
 
 zuul: 
   ignoreSecurityHeaders: false
@@ -32,13 +32,13 @@ zuul:
   routes:
     auth-service:
       path: /auth/**
-      url: http://localhost:10001
+      url: http://localhost:10001/auth
       service-id: auth-service
       strip-prefix: true
       sensitive-headers: Cookie, Set-Cookie
     prject-service:
       path: /shopper/**
-      url: http://localhost:10002
+      url: http://localhost:10002/shopper
       service-id: shopper-service
       strip-prefix: true
       sensativeHeaders:
