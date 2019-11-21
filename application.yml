@@ -1,0 +1,3 @@
+SHOPPER_JWT_SECRET: local-deploy
+SHOPPER_ZUUL_ACCESS_HEADER: local-deploy
+SHOPPER_ZUUL_ACCESS_SALT: local-deploy

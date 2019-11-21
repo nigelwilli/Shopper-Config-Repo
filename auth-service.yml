@@ -5,19 +5,20 @@ spring:
       path: /h2-console
   datasource:
     platform: h2
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
-    password: password
+    password:
     driver-class-name: org.h2.Driver
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-    properties:
       hibernate:
         ddl-auto: create-drop
-        show-sql: true
-        format-sql: true
-        use-sql-comments: true
+      properties:
+        hibernate:
+          show-sql: true
+          format-sql: true
+          use-sql-comments: true
 
 server:
   port: 10001
@@ -29,7 +30,7 @@ server:
       serviceUrl:
         defaultZone: http://localhost:8761/eureka
       register-with-eureka: true
-      fetch-registery: false
+      fetch-registery: true
 
 management:
   endpoints:
