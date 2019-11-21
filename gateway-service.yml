@@ -3,29 +3,25 @@ server:
   tomcat:
     max-http-post-size: 2MB
     max-swallow-size: 2MB
-  error:
-    whitelabel:
-      enabled: false
-    include-stack-trace: always
-  use-forward-headers: true
-
-spring:
+  
+spring:  
   servlet:
     multipart:
       max-file-size: 2MB
       max-request-size: 2MB
       enabled: true
 
-ribbon: 
-  Readtimeout: 9999999
+ribbon:
+  ReadTimeout: 9999999
 
-eureka: 
+eureka:
   client:
-    serviceUrl: http://localhost:8761/eureka
-  register-with-eureka: true
-  fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
 
-zuul: 
+zuul:
   ignored-services: '*'
   routes:
     auth-service:
@@ -33,20 +29,18 @@ zuul:
       url: http://localhost:10001
       service-id: auth-service
       strip-prefix: true
-      sensitive-headers: Cookie, Set-Cookie
-    prject-service:
+      sensitive-headers: Cookie,Set-Cookie
+    project-service:
       path: /shopper/**
       url: http://localhost:10002
       service-id: shopper-service
-      strip-prefix: true
-      sensativeHeaders:
       
 management:
   endpoints:
-    web: 
+    web:
       exposure:
         include: '*'
-
+        
 security:
   jwt:
     secret: ${SHOPPER_JWT_SECRET}
